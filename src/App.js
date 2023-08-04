@@ -41,13 +41,13 @@ function App() {
   const mappedContent = filteredData.map((item) => { 
 
     setActiveTab(item.title);
-    
+
     const createdAtDate = new Date(item.createdAt);
     const monthNumber = createdAtDate.getUTCMonth();
     const monthName = monthNames[monthNumber];
 
     const year = createdAtDate.getUTCFullYear();
-    const day = createdAtDate.getUTCDate();
+    let day = createdAtDate.getUTCDate();
     const hour = createdAtDate.getUTCHours();
     const minute = createdAtDate.getUTCMinutes();
 
