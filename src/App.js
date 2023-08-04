@@ -11,7 +11,7 @@ const monthNames = [
 const background = "linear-gradient(to right, #A1CCD1, #F4F2DE)";
 
 function App() {
-  const [activeTab, setActiveTab] = useState("Frontend");
+  const [activeTab, setActiveTab] = useState("Hello World!");
   const [postsData, setPostsData] = useState([]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -39,8 +39,6 @@ function App() {
   const filteredData = postsData.filter((item) => item.title === activeTab);
 
   const mappedContent = filteredData.map((item) => { 
-
-    setActiveTab(item.title);
 
     const createdAtDate = new Date(item.createdAt);
     const monthNumber = createdAtDate.getUTCMonth();
