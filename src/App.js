@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -23,18 +23,16 @@ function App() {
     setActiveTab(key);
   };
 
-  useEffect(() => {
-    const fetchPostsData = async () => {
-      try {
-        const response = await fetch("https://blog-394814.ew.r.appspot.com/blog/getPosts");
-        const data = await response.json();
-        setPostsData(data);
-      } catch (error) {
-        console.error("Error fetching posts data:", error);
-      }
-    };
-    fetchPostsData();
-  }, []);
+  const fetchPostsData = async () => {
+    try {
+      const response = await fetch("https://blog-394814.ew.r.appspot.com/blog/getPosts");
+      const data = await response.json();
+      setPostsData(data);
+    } catch (error) {
+      console.error("Error fetching posts data:", error);
+    }
+  };
+  fetchPostsData();
 
   const filteredData = postsData.filter((item) => item.title === activeTab);
 
