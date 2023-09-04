@@ -18,7 +18,6 @@ const monthNames = [
   "November",
   "December",
 ];
-const background = "linear-gradient(to right, #A1CCD1, #F4F2DE)";
 
 function App() {
   const [activeTab, setActiveTab] = useState("Hello World!");
