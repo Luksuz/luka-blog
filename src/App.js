@@ -5,8 +5,18 @@ import Navbar from "react-bootstrap/Navbar";
 import Content from "./components/Content";
 
 const monthNames = [
-  "January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
 const background = "linear-gradient(to right, #A1CCD1, #F4F2DE)";
 
@@ -25,7 +35,9 @@ function App() {
 
   const fetchPostsData = async () => {
     try {
-      const response = await fetch("https://blog-394814.ew.r.appspot.com/blog/getPosts");
+      const response = await fetch(
+        "https://blog-394814.ew.r.appspot.com/blog/getPosts"
+      );
       const data = await response.json();
       setPostsData(data);
     } catch (error) {
@@ -36,8 +48,7 @@ function App() {
 
   const filteredData = postsData.filter((item) => item.title === activeTab);
 
-  const mappedContent = filteredData.map((item) => { 
-
+  const mappedContent = filteredData.map((item) => {
     const createdAtDate = new Date(item.createdAt);
     const monthNumber = createdAtDate.getUTCMonth();
     const monthName = monthNames[monthNumber];
@@ -47,38 +58,40 @@ function App() {
     const hour = createdAtDate.getUTCHours();
     const minute = createdAtDate.getUTCMinutes();
 
-    if(day === 1){
+    if (day === 1) {
       day = day + "st";
-    }
-    else if(day === 2){
+    } else if (day === 2) {
       day = day + "nd";
-    }
-    else if(day === 3){
+    } else if (day === 3) {
       day = day + "rd";
-    }
-    else{
+    } else {
       day = day + "th";
     }
-    const formattedCreatedAt = `${monthName} ${day.toString().padStart(2, '0')} ${year}. at ${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
-  
-  return (
-    <Content
-      key={item.title}
-      title={item.title}
-      subtitle1={item.subtitle1}
-      content1={item.content1}
-      subtitle2={item.subtitle2}
-      content2={item.content2}
-      subtitle3={item.subtitle3}
-      content3={item.content3}
-      subtitle4={item.subtitle4}
-      content4={item.content4}
-      subtitle5={item.subtitle5}
-      content5={item.content5}
-      images={item.images}
-      createdAt={formattedCreatedAt}
-    />
-  )});
+    const formattedCreatedAt = `${monthName} ${day
+      .toString()
+      .padStart(2, "0")} ${year}. at ${hour
+      .toString()
+      .padStart(2, "0")}:${minute.toString().padStart(2, "0")}`;
+
+    return (
+      <Content
+        key={item.title}
+        title={item.title}
+        subtitle1={item.subtitle1}
+        content1={item.content1}
+        subtitle2={item.subtitle2}
+        content2={item.content2}
+        subtitle3={item.subtitle3}
+        content3={item.content3}
+        subtitle4={item.subtitle4}
+        content4={item.content4}
+        subtitle5={item.subtitle5}
+        content5={item.content5}
+        images={item.images}
+        createdAt={formattedCreatedAt}
+      />
+    );
+  });
 
   const mappedTabs = postsData.map((item) => (
     <Nav.Item key={item.title} className="border rounded rounded">
@@ -93,8 +106,17 @@ function App() {
   ));
 
   return (
-    <>
-      <div className="" style={{ background }}>
+    <div
+      style={{
+        backgroundImage:
+          "url(https://images.unsplash.com/photo-1595113316349-9fa4eb24f884?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2944&q=80)",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
+    >
+      {/* Content goes here */}
+      <div className="container">
         <div className="d-flex justify-content-between">
           <h1 className="text-4xl font-bold p-2">Luka Minđek</h1>
           {/* Navbar for mobile screens */}
@@ -128,7 +150,7 @@ function App() {
           <div className="col-12 col-sm-9">{mappedContent}</div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
