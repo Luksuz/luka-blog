@@ -24,3 +24,7 @@ To view or work with the blog locally, follow these steps:
    npm install
    npm start
    ```
+
+## CONTRIBUTING
+
+Contributions to enhance or update my blog website are welcome. If you have suggestions, content updates, or improvements, please feel free to submit a pull request or open an issue.
